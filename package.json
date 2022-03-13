@@ -1,37 +1,60 @@
 {
- "name": "clash.gg",
- "version": "1.0.0",
- "main": "index.js",
- "license": "MIT",
- "scripts": {
-  "test": "jest --passWithNoTests --colors --silent --runInBand",
-  "test:unit": "yarn test --watch",
-  "test:staged": "yarn test",
-  "test:ci": "yarn test --coverage",
-  "prepare": "husky install",
-  "postinstall": "husky install"
- },
- "lint-staged": {
-  "*.ts": [
-   "eslint . --ext .ts",
-   "yarn test:staged"
-  ]
- },
- "devDependencies": {
-  "@commitlint/cli": "^16.2.1",
-  "@commitlint/config-conventional": "^16.2.1",
-  "@typescript-eslint/eslint-plugin": "^5.14.0",
-  "@typescript-eslint/parser": "^5.14.0",
-  "eslint": "^7.32.0",
-  "eslint-config-standard": "^16.0.3",
-  "eslint-plugin-import": "^2.25.4",
-  "eslint-plugin-node": "^11.1.0",
-  "eslint-plugin-promise": "^5.2.0",
-  "eslint-plugin-react": "^7.29.3",
-  "husky": "^7.0.4",
-  "jest": "^27.5.1",
-  "lint-staged": "^12.3.5",
-  "ts-jest": "^27.1.3",
-  "typescript": "^4.6.2"
- }
+  "name": "clash.gg",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "start": "next start",
+    "build": "next build",
+    "test": "jest --passWithNoTests --colors --silent --runInBand",
+    "test:unit": "yarn test --watch",
+    "test:staged": "yarn test",
+    "test:ci": "yarn test --coverage",
+    "prepare": "husky install",
+    "postinstall": "husky install",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "next": "^12.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-interactions": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/react": "^6.4.19",
+    "@storybook/testing-library": "^0.0.9",
+    "@types/react": "^17.0.40",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "babel-loader": "^8.2.3",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-react": "^7.29.3",
+    "eslint-plugin-storybook": "^0.5.7",
+    "husky": "^7.0.4",
+    "jest": "^27.5.1",
+    "lint-staged": "^12.3.5",
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.6.2"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint . --ext .ts",
+      "yarn test:staged"
+    ]
+  }
 }

@@ -5,7 +5,13 @@
 		"node": true,
 		"jest": true
 	},
-	"extends": ["plugin:react/recommended", "standard"],
+	"extends": [
+		"plugin:react/jsx-runtime",
+		"standard",
+		"prettier",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:storybook/recommended"
+	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaFeatures": {
@@ -14,19 +20,29 @@
 		"ecmaVersion": "latest",
 		"sourceType": "module"
 	},
-	"plugins": ["react", "@typescript-eslint"],
+	"plugins": ["react", "@typescript-eslint", "prettier"],
 	"rules": {
 		"indent": "off",
+		"quotes": "error",
+		"jsx-quotes": "error",
 		"@typescript-eslint/indent": ["error", "tab", { "SwitchCase": 1 }],
 		"no-tabs": "off",
 		"no-unused-vars": "off",
-		"@typescript-eslint/no-unused-vars": [
-			"error",
-			{ "argsIgnorePattern": "^_" }
-		],
+		"@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
 		"no-useless-constructor": "off",
 		"no-new": "off",
 		"no-unreachable": "off",
 		"no-useless-escape": "off"
-	}
+	},
+	"overrides": [
+		{
+			"files": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
+			"rules": {
+				"storybook/hierarchy-separator": "error",
+				"storybook/default-exports": "off",
+				"storybook/prefer-pascal-case": "error",
+				"storybook/story-exports": "error"
+			}
+		}
+	]
 }
