@@ -1,5 +1,5 @@
 import { DefaultTheme } from 'styled-components'
-import FixedStyles from './FixedStyles'
+import FixedStyles from '@/styles/themes/FixedStyles'
 
 const lightTheme: DefaultTheme = {
 	title: 'Light',

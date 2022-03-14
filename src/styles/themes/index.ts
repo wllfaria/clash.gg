@@ -1,3 +1,3 @@
-export { default as DarkTheme } from './DarkTheme'
-export { default as LightTheme } from './LightTheme'
-export { default as FixedStyles } from './FixedStyles'
+export { default as DarkTheme } from '@/styles/themes/DarkTheme'
+export { default as LightTheme } from '@/styles/themes/LightTheme'
+export { default as FixedStyles } from '@/styles/themes/FixedStyles'
