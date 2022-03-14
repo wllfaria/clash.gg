@@ -34,9 +34,7 @@ const fixedStyles: PartialTheme<DefaultTheme> = {
 		4: '2.5rem',
 		5: '2rem',
 		6: '1.5rem',
-		7: '1.2rem',
-		8: '1.1rem',
-		9: '1rem'
+		7: '1.2rem'
 	},
 
 	margins: {
