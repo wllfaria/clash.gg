@@ -1,3 +1,10 @@
+import { Input } from '@/components/Input'
+import { Form } from '@unform/web'
+
 export default function LoginPage() {
-	return <h1>LoginPage Works</h1>
+	return (
+		<Form onSubmit={() => null}>
+			<Input placeholder="asda" type="password" name="test" />
+		</Form>
+	)
 }

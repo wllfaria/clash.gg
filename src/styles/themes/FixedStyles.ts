@@ -5,7 +5,7 @@ type PartialTheme<T> = {
 	[K in keyof T]: Omit<T[K], ExcludedProps>
 }
 
-const fixedStyles: PartialTheme<DefaultTheme> = {
+export const fixedStyles: PartialTheme<DefaultTheme> = {
 	title: '',
 
 	colors: {
@@ -86,5 +86,3 @@ const fixedStyles: PartialTheme<DefaultTheme> = {
 		xl: '1440px'
 	}
 }
-
-export default fixedStyles

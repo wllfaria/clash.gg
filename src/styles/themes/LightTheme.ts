@@ -1,15 +1,15 @@
 import { DefaultTheme } from 'styled-components'
-import FixedStyles from '@/styles/themes/FixedStyles'
+import { fixedStyles } from './FixedStyles'
 
-const lightTheme: DefaultTheme = {
+export const lightTheme: DefaultTheme = {
 	title: 'Light',
 
 	colors: {
 		primary: {
-			...FixedStyles.colors.primary
+			...fixedStyles.colors.primary
 		},
 		accent: {
-			...FixedStyles.colors.accent
+			...fixedStyles.colors.accent
 		},
 		background: {
 			100: '#EDF2F4',
@@ -22,31 +22,31 @@ const lightTheme: DefaultTheme = {
 			300: '#8D99AE',
 		},
 		danger: {
-			...FixedStyles.colors.danger
+			...fixedStyles.colors.danger
 		},
 		success: {
-			...FixedStyles.colors.success
+			...fixedStyles.colors.success
 		}
 	},
 
 	fontSizes: {
-		...FixedStyles.fontSizes
+		...fixedStyles.fontSizes
 	},
 
 	margins: {
-		...FixedStyles.margins
+		...fixedStyles.margins
 	},
 
 	paddings: {
-		...FixedStyles.paddings
+		...fixedStyles.paddings
 	},
 
 	borderRadius: {
-		...FixedStyles.borderRadius
+		...fixedStyles.borderRadius
 	},
 
 	breakpoints: {
-		...FixedStyles.breakpoints
+		...fixedStyles.breakpoints
 	}
 }
 

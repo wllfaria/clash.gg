@@ -1,2 +1,2 @@
-export { default as GlobalStyles } from '@/styles/GlobalStyles'
-export * from '@/styles/themes'
+export { globalStyles } from './GlobalStyles'
+export * from './themes'

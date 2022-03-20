@@ -1,60 +1,61 @@
-import DarkTheme from '@/styles/themes/DarkTheme'
-import LightTheme from '@/styles/themes/LightTheme'
-import { AppThemeConstants } from '@/utils/constants'
-import React, { createContext, useCallback, useEffect, useReducer } from 'react'
+import { AppThemeConstants } from '../utils/constants'
+import React, { createContext, useCallback, useEffect, useMemo, useReducer } from 'react'
 import { ThemeProvider, DefaultTheme } from 'styled-components'
-import { GlobalStyles } from '../styles'
+import { globalStyles as GlobalStyles, darkTheme, lightTheme } from '../styles'
 
-export type AppThemeState = {
+export type AppThemeInitialState = {
 	theme: DefaultTheme
 	toggleTheme: () => void
+}
+
+type AppThemeStateProps = {
+	children: React.ReactElement
+	theme: DefaultTheme
 }
 
 type AppThemeActionsTypes =  AppThemeConstants.SHOW_LIGHT_MODE | AppThemeConstants.SHOW_DARK_MODE
 
 type AppThemeActions = {
 	type: AppThemeActionsTypes
-	payload: DefaultTheme
 }
 
 type ReducerHandler = {
-	[key in AppThemeActionsTypes]: (action: AppThemeActions) => AppThemeState
+	[key in AppThemeActionsTypes]: (action: AppThemeActions) => AppThemeInitialState
 }
 
-const initialState: AppThemeState = {
-	theme: DarkTheme,
-	toggleTheme: () => null
-}
+export const AppThemeContext = createContext<AppThemeInitialState>({} as AppThemeInitialState)
 
-export const AppThemeContext = createContext<AppThemeState>(initialState)
-
-const reducer = (state: AppThemeState, action: AppThemeActions) => {
+const reducer = (state: AppThemeInitialState, action: AppThemeActions) => {
 	const reducerHandler: ReducerHandler = {
-		SHOW_LIGHT_MODE: action => {
-			return { ...state, theme: action.payload }
+		SHOW_LIGHT_MODE: () => {
+			return { ...state, theme: lightTheme }
 		},
-		SHOW_DARK_MODE: action => {
-			return { ...state, theme: action.payload }
+		SHOW_DARK_MODE: () => {
+			return { ...state, theme: darkTheme }
 		}
 	}
 
 	return reducerHandler[action.type](action)
 }
 
-const AppThemeState: React.FC = ({ children }) => {
+export const AppThemeState = ({ children, theme }: AppThemeStateProps ) => {
+	const initialState: AppThemeInitialState = useMemo(() => ({
+		theme: theme || darkTheme,
+		toggleTheme: () => null
+	}), [])
+
 	const [state, dispatch] = useReducer(reducer, initialState)
 
-	const makeSwitchModeAction = (actionType: AppThemeConstants.SHOW_DARK_MODE | AppThemeConstants.SHOW_LIGHT_MODE, theme: DefaultTheme): AppThemeActions => {
+
+	const makeSwitchModeAction = (actionType: AppThemeConstants.SHOW_DARK_MODE | AppThemeConstants.SHOW_LIGHT_MODE): AppThemeActions => {
 		return {
 			type: actionType,
-			payload: theme
 		}
-
 	}
 
 	const toggleTheme = useCallback(() => {
-		const darkModeAction = makeSwitchModeAction(AppThemeConstants.SHOW_DARK_MODE, DarkTheme)
-		const lightModeAction = makeSwitchModeAction(AppThemeConstants.SHOW_LIGHT_MODE, LightTheme)
+		const darkModeAction = makeSwitchModeAction(AppThemeConstants.SHOW_DARK_MODE)
+		const lightModeAction = makeSwitchModeAction(AppThemeConstants.SHOW_LIGHT_MODE)
 		const isCurrentThemeDark = state.theme.title === AppThemeConstants.DARK
 		const actionToDispatch = isCurrentThemeDark ? lightModeAction : darkModeAction
 		const themeToSwitch = isCurrentThemeDark ? AppThemeConstants.LIGHT : AppThemeConstants.DARK
@@ -69,7 +70,7 @@ const AppThemeState: React.FC = ({ children }) => {
 		state.theme.title !== themeParsed && toggleTheme()
 	}, [state.theme.title, toggleTheme])
 
-	const contextValue: AppThemeState = {
+	const contextValue: AppThemeInitialState = {
 		...state,
 		toggleTheme
 	}
@@ -83,5 +84,3 @@ const AppThemeState: React.FC = ({ children }) => {
 		</AppThemeContext.Provider>
 	)
 }
-
-export default AppThemeState

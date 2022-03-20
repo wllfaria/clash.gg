@@ -1,15 +1,15 @@
 import { DefaultTheme } from 'styled-components'
-import FixedStyles from '@/styles/themes/FixedStyles'
+import { fixedStyles } from './FixedStyles'
 
-const darkTheme: DefaultTheme = {
+export const darkTheme: DefaultTheme = {
 	title: 'Dark',
 
 	colors: {
 		primary: {
-			...FixedStyles.colors.primary
+			...fixedStyles.colors.primary
 		},
 		accent: {
-			...FixedStyles.colors.accent
+			...fixedStyles.colors.accent
 		},
 		background: {
 			100: '#0B090A',
@@ -22,32 +22,30 @@ const darkTheme: DefaultTheme = {
 			300: '#A5A5A5',
 		},
 		danger: {
-			...FixedStyles.colors.danger
+			...fixedStyles.colors.danger
 		},
 		success: {
-			...FixedStyles.colors.danger
+			...fixedStyles.colors.danger
 		}
 	},
 
 	fontSizes: {
-		...FixedStyles.fontSizes
+		...fixedStyles.fontSizes
 	},
 
 	margins: {
-		...FixedStyles.margins
+		...fixedStyles.margins
 	},
 
 	paddings: {
-		...FixedStyles.paddings
+		...fixedStyles.paddings
 	},
 
 	borderRadius: {
-		...FixedStyles.borderRadius
+		...fixedStyles.borderRadius
 	},
 
 	breakpoints: {
-		...FixedStyles.breakpoints
+		...fixedStyles.breakpoints
 	}
 }
-
-export default darkTheme
