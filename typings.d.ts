@@ -22,6 +22,7 @@ declare module 'styled-components' {
 				100: string
 				white: string
 				black: string
+				accent: string
 			}
 
 			text: {
