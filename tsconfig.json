@@ -1,6 +1,5 @@
 {
 	"compilerOptions": {
-		"outDir": "dist",
 		"target": "ESNext",
 		"module": "commonjs",
 		"esModuleInterop": true,
@@ -20,13 +19,14 @@
 		"jsx": "preserve",
 		"baseUrl": "./src",
 		"paths": {
-			"@/components/*": ["components/*"],
+			"@/components/*": ["presentation/components/*"],
 			"@/states/*": ["states/*"],
 			"@/utils/*": ["utils/*"],
 			"@/pages/*": ["pages/*"],
-			"@/styles/*": ["styles/*"]
+			"@/styles/*": ["presentation/styles/*"],
+			"@/domain/*": ["domain/*"]
 		}
 	},
 	"include": ["src", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules", "**/*.spec.tsx"]
 }

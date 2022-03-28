@@ -1,5 +1,3 @@
-export default function HomePage () {
-	return (
-		<>HomePage Works</>
-	)
+export default function HomePage() {
+	return <>HomePage Works</>
 }

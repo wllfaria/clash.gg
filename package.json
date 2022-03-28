@@ -7,7 +7,7 @@
     "dev": "next dev",
     "start": "next start",
     "build": "next build",
-    "test": "jest --passWithNoTests --colors --silent --runInBand",
+    "test": "jest --clearCache && jest --passWithNoTests --colors --runInBand",
     "test:unit": "yarn test --watch",
     "test:staged": "yarn test",
     "test:ci": "yarn test --coverage",
@@ -35,6 +35,8 @@
     "@storybook/addon-links": "^6.4.19",
     "@storybook/react": "^6.4.19",
     "@storybook/testing-library": "^0.0.9",
+    "@testing-library/react": "^12.1.4",
+    "@types/jest": "^27.4.1",
     "@types/react": "^17.0.40",
     "@types/styled-components": "^5.1.24",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
@@ -53,7 +55,7 @@
     "jest": "^27.5.1",
     "lint-staged": "^12.3.5",
     "prettier": "^2.5.1",
-    "ts-jest": "^27.1.3",
+    "ts-jest": "^27.1.4",
     "typescript": "^4.6.2"
   },
   "lint-staged": {

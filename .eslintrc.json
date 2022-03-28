@@ -6,7 +6,6 @@
 		"jest": true
 	},
 	"extends": [
-		"plugin:react/jsx-runtime",
 		"standard",
 		"prettier",
 		"plugin:@typescript-eslint/recommended",
@@ -22,9 +21,12 @@
 	},
 	"plugins": ["react", "@typescript-eslint", "prettier"],
 	"rules": {
+		"prettier/prettier": "error",
 		"indent": "off",
 		"quotes": "error",
 		"jsx-quotes": "error",
+		"no-use-before-define": "off",
+		"@typescript-eslint/no-use-before-define": "error",
 		"@typescript-eslint/indent": ["error", "tab", { "SwitchCase": 1 }],
 		"no-tabs": "off",
 		"no-unused-vars": "off",
