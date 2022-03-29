@@ -1,6 +1,9 @@
 export class InvalidParamError extends Error {
-	constructor(fieldName: string) {
-		super(`Invalid param: ${fieldName}`)
+	public field: string
+
+	constructor(fieldName: string, message: string) {
+		super(message)
 		this.name = 'InvalidParamError'
+		this.field = fieldName
 	}
 }

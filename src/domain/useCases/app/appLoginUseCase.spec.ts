@@ -1,6 +1,6 @@
 import { Authenticator } from '@/domain/contracts/authenticator'
 import { ChainHandler } from '@/domain/contracts/chainHandler'
-import { HttpClient } from '@/domain/contracts/httpClient'
+import { HttpClient } from 'data/contracts/httpClient'
 import { InvalidParamError, MissingParamError } from '../../../utils/errors'
 import { PasswordValidatorChainHandler, UsernameValidatorChainHandler } from '../../../validations'
 import { LoginDto } from '../../dtos/loginDto'
@@ -92,7 +92,9 @@ describe('AuthUseCase', () => {
 			username: 'ab'
 		}
 
-		expect(sut.login(loginDto)).rejects.toEqual(new InvalidParamError('username must be at least 3 characters long'))
+		expect(sut.login(loginDto)).rejects.toEqual(
+			new InvalidParamError('username', 'username must be at least 3 characters long')
+		)
 		expect(sut.login(loginDto)).rejects.toThrow()
 	})
 
@@ -103,7 +105,9 @@ describe('AuthUseCase', () => {
 			username: 'any_username'
 		}
 
-		expect(sut.login(loginDto)).rejects.toEqual(new InvalidParamError('password must be at least 8 characters long'))
+		expect(sut.login(loginDto)).rejects.toEqual(
+			new InvalidParamError('password', 'password must be at least 8 characters long')
+		)
 		expect(sut.login(loginDto)).rejects.toThrow()
 	})
 
@@ -122,7 +126,9 @@ describe('AuthUseCase', () => {
 			username: 'too_long_username_provided'
 		}
 
-		expect(sut.login(loginDto)).rejects.toEqual(new InvalidParamError('username must be at most 24 characters long'))
+		expect(sut.login(loginDto)).rejects.toEqual(
+			new InvalidParamError('username', 'username must be at most 24 characters long')
+		)
 		expect(sut.login(loginDto)).rejects.toThrow()
 	})
 

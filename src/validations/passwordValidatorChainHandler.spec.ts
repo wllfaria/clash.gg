@@ -13,7 +13,7 @@ describe('PasswordValidatorChainHandler', () => {
 
 		expect(() => {
 			sut.handle(data)
-		}).toThrow(new InvalidParamError('password must be at least 8 characters long'))
+		}).toThrow(new InvalidParamError('password', 'password must be at least 8 characters long'))
 	})
 
 	it('Should throw if password is not provided', () => {

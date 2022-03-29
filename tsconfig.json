@@ -20,11 +20,12 @@
 		"baseUrl": "./src",
 		"paths": {
 			"@/components/*": ["presentation/components/*"],
-			"@/states/*": ["states/*"],
+			"@/states/*": ["presentation/states/*"],
 			"@/utils/*": ["utils/*"],
 			"@/pages/*": ["pages/*"],
 			"@/styles/*": ["presentation/styles/*"],
-			"@/domain/*": ["domain/*"]
+			"@/domain/*": ["domain/*"],
+			"@/data/*": ["data/*"]
 		}
 	},
 	"include": ["src", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
