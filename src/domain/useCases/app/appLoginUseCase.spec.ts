@@ -1,6 +1,7 @@
-import { Authenticator } from '@/domain/contracts/authenticator'
-import { ChainHandler } from '@/domain/contracts/chainHandler'
-import { HttpClient } from 'data/contracts/httpClient'
+import { Authenticator } from '../../contracts/authenticator'
+import { ChainHandler } from '../../contracts/chainHandler'
+import { AuthDto } from '../../dtos/authDto'
+import { HttpClient } from '../../../data/contracts/httpClient'
 import { InvalidParamError, MissingParamError } from '../../../utils/errors'
 import { PasswordValidatorChainHandler, UsernameValidatorChainHandler } from '../../../validations'
 import { LoginDto } from '../../dtos/loginDto'
@@ -10,22 +11,22 @@ class MongoAuthenticatorSpy implements Authenticator {
 	public loginParams: unknown
 	constructor(private readonly validatorChain: ChainHandler, private readonly httpClient: HttpClient) {}
 
-	async login({ username, password }: LoginDto): Promise<unknown> {
+	async login({ username, password }: LoginDto): Promise<AuthDto> {
 		this.loginParams = { username, password }
 		await this.validatorChain.handle({ username, password })
 		return await this.httpClient.post('/', { username, password })
 	}
 
-	async register(): Promise<unknown> {
-		return null
+	async register(): Promise<AuthDto> {
+		return null as any
 	}
 }
 
 class HttpClientSpy implements HttpClient {
 	public loginParams: unknown
-	async post(url: string, body: unknown): Promise<unknown> {
+	async post<T>(url: string, body: unknown): Promise<T> {
 		this.loginParams = { url, body }
-		return {}
+		return {} as T
 	}
 }
 

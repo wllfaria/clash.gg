@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppThemeState } from '../../../states/AppThemeState'
+import { AppThemeState } from '../../../presentation/states/AppThemeState'
 import { Input, InputProps } from '.'
 import { DefaultTheme } from 'styled-components'
 import { darkTheme, fixedStyles, lightTheme } from '../../styles'

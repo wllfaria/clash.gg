@@ -1,4 +1,4 @@
-import { AppThemeState } from '@/states/AppThemeState'
+import { AppThemeState } from '../presentation/states/AppThemeState'
 import type { AppProps } from 'next/app'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
