@@ -1,7 +1,7 @@
-import { AppThemeConstants } from '../utils'
+import { AppThemeConstants } from '../../utils'
 import React, { createContext, ReactElement, useCallback, useEffect, useMemo, useReducer } from 'react'
 import { ThemeProvider, DefaultTheme } from 'styled-components'
-import { globalStyles as GlobalStyles, darkTheme, lightTheme } from '../presentation/styles'
+import { globalStyles as GlobalStyles, darkTheme, lightTheme } from '../styles'
 
 export type AppThemeInitialState = {
 	theme: DefaultTheme

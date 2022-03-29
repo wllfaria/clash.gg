@@ -13,7 +13,7 @@ describe('UsernameValidatorChainHandler', () => {
 
 		expect(() => {
 			sut.handle(data)
-		}).toThrow(new InvalidParamError('username must be at least 3 characters long'))
+		}).toThrow(new InvalidParamError('username', 'username must be at least 3 characters long'))
 	})
 
 	it('Should throw if username is too long', () => {
@@ -22,7 +22,7 @@ describe('UsernameValidatorChainHandler', () => {
 
 		expect(() => {
 			sut.handle(data)
-		}).toThrow(new InvalidParamError('username must be at most 24 characters long'))
+		}).toThrow(new InvalidParamError('username', 'username must be at most 24 characters long'))
 	})
 
 	it('Should throw if username is not provided', () => {

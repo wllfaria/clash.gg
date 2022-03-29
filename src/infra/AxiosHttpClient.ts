@@ -1,4 +1,4 @@
-import { HttpClient } from '@/domain/contracts/httpClient'
+import { HttpClient } from 'data/contracts/httpClient'
 import axios from 'axios'
 
 export class AxiosHttpClient implements HttpClient {
