@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import { DefaultTheme } from 'styled-components'
-import { AppThemeState } from '../../../states/AppThemeState'
+import { AppThemeState } from '../../../presentation/states/AppThemeState'
 import { NavBar } from '.'
 import { darkTheme, fixedStyles, lightTheme } from '../../styles'
 import { rgbToHex, getRgbValues } from '../../../../tests/testUtils'

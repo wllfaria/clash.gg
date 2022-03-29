@@ -1,22 +1,22 @@
 import { useRef } from 'react'
 import { FormHandles } from '@unform/core'
-import { GoButton } from '@/components/GoButton'
-import { Input } from '@/components/Input'
-import { Form } from '@/components/Form'
-import { Text } from '@/components/Text/Text'
-import { NavBar } from '@/components/NavBar'
-import { LoginFactory } from 'main/LoginFactory'
-import { LoginDto } from '@/domain/dtos/loginDto'
-import { InvalidParamError, MissingParamError } from '@/utils/errors'
+import { GoButton } from '../presentation/components/GoButton'
+import { Input } from '../presentation/components/Input'
+import { Form } from '../presentation/components/Form'
+import { Text } from '../presentation/components/Text/Text'
+import { NavBar } from '../presentation/components/NavBar'
+import { AppLoginFactory } from '../main/app/appLoginFactory'
+import { LoginDto } from '../domain/dtos/loginDto'
+import { InvalidParamError, MissingParamError } from '../utils/errors'
 
-import * as S from '@/styles/pages/loginPage'
+import * as S from '../presentation/styles/pages/loginPage'
 
 export default function LoginPage() {
 	const formRef = useRef<FormHandles>(null)
 
 	const doLogin = async (loginDto: LoginDto) => {
 		try {
-			const authenticator = LoginFactory.make()
+			const authenticator = AppLoginFactory.make()
 			await authenticator.login(loginDto)
 		} catch (err) {
 			if (err instanceof InvalidParamError) formRef.current?.setErrors({ [err.field]: err.message })

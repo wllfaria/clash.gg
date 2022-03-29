@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import { GoButton, GoButtonProps } from '.'
-import { AppThemeState } from '../../../states/AppThemeState'
+import { AppThemeState } from '../../../presentation/states/AppThemeState'
 import { darkTheme, fixedStyles, lightTheme } from '../../styles'
 import { rgbToHex, getRgbValues } from '../../../../tests/testUtils'
 import { DefaultTheme } from 'styled-components'
